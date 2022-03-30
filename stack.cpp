@@ -5,27 +5,24 @@ using namespace std;
 class Stack
 {
     int top;
-    int stack[10];
+    int stack[maxsize];
 
 public:
     Stack()
     {
         top = 0;
     }
+
     bool isfull()
     {
-        if (top == maxsize)
-            return true;
-        else
-            return false;
+        return top == maxsize;
     }
+
     bool isempty()
     {
-        if (top == 0)
-            return true;
-        else
-            return false;
+        return top == 0;
     }
+
     void push(int data)
     {
         if (isfull())
@@ -37,6 +34,7 @@ public:
             stack[top] = data;
         top++;
     }
+
     void pop()
     {
         if (isempty())
@@ -48,24 +46,26 @@ public:
             top--;
         cout << "pops " << stack[top] << endl;
     }
+
     void display()
     {
-        int i;
         if (top == 0)
         {
             cout << "Nothing to display" << endl;
         }
         else
             cout << "Displaying" << endl;
-        for (i = 0; i < top; i++)
+        for (int i = 0; i < top; i++)
         {
             cout << stack[i] << endl;
         }
     }
+
     void Top()
     {
         cout << "Top is " << stack[top - 1] << endl;
     }
+
     void Size()
     {
         cout << "Size of Stack is " << top << endl;
