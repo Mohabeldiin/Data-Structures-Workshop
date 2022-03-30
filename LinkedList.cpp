@@ -123,19 +123,57 @@ public:
 int main()
 {
     LinkedList List;
-    List.display();
-    List.insert(15);
-    List.display();
-    List.insert(25);
-    List.display();
-    List.insert(35);
-    List.display();
-    List.insert(45);
-    List.display();
-    List.find(15);
-    List.remove(25);
-    List.display();
-    List.insertAtEnd(55);
-    List.insertAtEnd(65);
-    List.display();
+    string choice;
+    int element;
+    while (true)
+    {
+        cout << "*--------------------------------------------------------------------*" << endl;
+        cout << "1.INSERT  2.INSERT AT END  3.DISPLAY  4.FIND  5.ISEMPTY  6.REMOVE  7.EXIT " << endl;
+        cout << "*--------------------------------------------------------------------*" << endl;
+        cin >> choice;
+        if (choice == "1")
+        {
+            cout << "Enter Element ";
+            cin >> element;
+            List.insert(element);
+        }
+        else if (choice == "2")
+        {
+            cout << "Enter Element ";
+            cin >> element;
+            List.insertAtEnd(element);
+        }
+        else if (choice == "3")
+        {
+            List.display();
+        }
+        else if (choice == "4")
+        {
+            cout << "Enter Element ";
+            cin >> element;
+            List.find(element);
+        }
+        else if (choice == "5")
+        {
+            if (List.isEmpty())
+                cout << "List is Empty" << endl;
+            else
+                cout << "List is not Empty" << endl;
+        }
+        else if (choice == "6")
+        {
+            cout << "Enter Element ";
+            cin >> element;
+            List.remove(element);
+        }
+        else if (choice == "7")
+        {
+            cout << "EXIT" << endl;
+            break;
+        }
+        else
+        {
+            cout << "INVALID CHOICE" << endl;
+        }
+    }
 }
