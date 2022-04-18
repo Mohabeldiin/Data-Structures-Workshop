@@ -25,6 +25,10 @@ class LinkedList
     Node *head;
     Node *tail;
     Node *temp;
+    bool isEmpty()
+    {
+        return head == nullptr;
+    }
 
 public:
     LinkedList()
@@ -33,9 +37,27 @@ public:
         tail = nullptr;
     }
 
-    bool isEmpty()
+    int GetInput()
     {
-        return head == nullptr;
+        string element;
+        cout << "Enter Element ";
+        cin >> element;
+        for (int i = 0; i < element.length(); i++)
+            if (!isdigit(element[i]))
+            {
+                cout << "Invalid input. Please enter an integer." << endl;
+                cin.clear();
+                return GetInput();
+            }
+        return stoi(element);
+    }
+
+    void isEmptyCheck()
+    {
+        if (isEmpty())
+            cout << "List is empty." << endl;
+        else
+            cout << "List is not empty." << endl;
     }
 
     void insert(int data)
@@ -124,56 +146,35 @@ int main()
 {
     LinkedList List;
     string choice;
-    int element;
     while (true)
     {
-        cout << "*--------------------------------------------------------------------*" << endl;
-        cout << "1.INSERT  2.INSERT AT END  3.DISPLAY  4.FIND  5.ISEMPTY  6.REMOVE  7.EXIT " << endl;
-        cout << "*--------------------------------------------------------------------*" << endl;
+        system("cls");
+        cout << "*------------------------------------------------------------------------------------*" << endl;
+        cout << "1.INSERT 2.ASSIGNMENT  3.INSERT AT END  4.DISPLAY 5.FIND  6.ISEMPTY  7.REMOVE  8.EXIT " << endl;
+        cout << "*------------------------------------------------------------------------------------*" << endl;
         cin >> choice;
+
         if (choice == "1")
-        {
-            cout << "Enter Element ";
-            cin >> element;
-            List.insert(element);
-        }
+            List.insert(List.GetInput());
         else if (choice == "2")
-        {
-            cout << "Enter Element ";
-            cin >> element;
-            List.insertAtEnd(element);
-        }
+            continue; // assignment code here
         else if (choice == "3")
-        {
-            List.display();
-        }
+            List.insertAtEnd(List.GetInput());
         else if (choice == "4")
-        {
-            cout << "Enter Element ";
-            cin >> element;
-            List.find(element);
-        }
+            List.display();
         else if (choice == "5")
-        {
-            if (List.isEmpty())
-                cout << "List is Empty" << endl;
-            else
-                cout << "List is not Empty" << endl;
-        }
+            List.find(List.GetInput());
         else if (choice == "6")
-        {
-            cout << "Enter Element ";
-            cin >> element;
-            List.remove(element);
-        }
+            List.isEmptyCheck();
         else if (choice == "7")
-        {
-            cout << "EXIT" << endl;
+            List.remove(List.GetInput());
+        else if (choice == "8")
             break;
-        }
         else
-        {
             cout << "INVALID CHOICE" << endl;
-        }
+
+        system("pause");
     }
+    cout << "EXIT" << endl;
+    return 0;
 }
